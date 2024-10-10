@@ -1,10 +1,9 @@
 #include <iostream>
 #include <vector>
-#include <limits>
 
 using namespace std;
 
-const int INF = numeric_limits<int>::max(); // Infinite value as a constant
+const int INF = INT_MAX; // Infinite value as a constant
 
 // Function to implement Dijkstra's algorithm
 void dijkstra(const vector<vector<int>>& graph, int start, vector<int>& distances) { // Computational complexity: O(n*m), there are two for loops in the function that depend on the number of nodes n and the number of edges m
@@ -14,19 +13,19 @@ void dijkstra(const vector<vector<int>>& graph, int start, vector<int>& distance
     vector<bool> visited(n, false); // Array to keep track of visited nodes
 
     for (int i = 0; i < n; ++i) {
-        int u = -1; // Node with the shortest distance
+        int s = -1; // Node with the shortest distance
         for (int j = 0; j < n; ++j) {
-            if (!visited[j] && (u == -1 || distances[j] < distances[u])) { // Find the node with the shortest distance
-                u = j;
+            if (!visited[j] && (s == -1 || distances[j] < distances[s])) { // Find the node with the shortest distance
+                s = j;
             }
         }
 
-        if (distances[u] == INF) break; // Node cannot be reached due to being infinite (disconnected graph)
+        if (distances[s] == INF) break; // Node cannot be reached due to being infinite (disconnected graph)
 
-        visited[u] = true;
+        visited[s] = true;
         for (int v = 0; v < n; ++v) {
-            if (graph[u][v] != -1 && distances[u] + graph[u][v] < distances[v]) { // Check if there is a shorter path by going through node u
-                distances[v] = distances[u] + graph[u][v];
+            if (graph[s][v] != -1 && distances[s] + graph[s][v] < distances[v]) { // Check if there is a shorter path by going through node u
+                distances[v] = distances[s] + graph[s][v];
             }
         }
     }
