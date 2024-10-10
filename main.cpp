@@ -7,7 +7,7 @@ using namespace std;
 const int INF = numeric_limits<int>::max(); // Infinite value as a constant
 
 // Function to implement Dijkstra's algorithm
-void dijkstra(const vector<vector<int>>& graph, int start, vector<int>& distances) { // Computational complexity: O(n^2), there are two for loops in the function that depend on the number of nodes
+void dijkstra(const vector<vector<int>>& graph, int start, vector<int>& distances) { // Computational complexity: O(n*m), there are two for loops in the function that depend on the number of nodes n and the number of edges m
     int n = graph.size(); // Number of nodes
     distances.assign(n, INF);
     distances[start] = 0;
@@ -33,7 +33,7 @@ void dijkstra(const vector<vector<int>>& graph, int start, vector<int>& distance
 }
 
 // Function to implement the Floyd-Warshall algorithm
-void floydWarshall(const vector<vector<int>>& graph, vector<vector<int>>& dist) { // Computational complexity: O(n^3), there are three for loops in the function that depend on the number of nodes
+void floydWarshall(const vector<vector<int>>& graph, vector<vector<int>>& dist) { // Computational complexity: O(n^3), there are three for loops in the function that depend on the number of vertices n
     int n = graph.size(); // Number of nodes
     dist = graph;
 
